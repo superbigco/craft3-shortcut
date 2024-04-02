@@ -2,6 +2,7 @@
 namespace verbb\shortcut\migrations;
 
 use craft\db\Migration;
+use craft\helpers\MigrationHelper;
 
 class Install extends Migration
 {
@@ -19,6 +20,7 @@ class Install extends Migration
 
     public function safeDown(): bool
     {
+        $this->dropForeignKeys();
         $this->removeTables();
 
         return true;
@@ -55,5 +57,12 @@ class Install extends Migration
     public function removeTables(): void
     {
         $this->dropTableIfExists('{{%shortcut_shortcuts}}');
+    }
+
+    public function dropForeignKeys(): void
+    {
+        if ($this->db->tableExists('{{%shortcut_shortcuts}}')) {
+            MigrationHelper::dropAllForeignKeysOnTable('{{%shortcut_shortcuts}}', $this);
+        }
     }
 }
