@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.3 - 2024-04-10
+
+### Fixed
+- Fix an error when uninstalling the plugin.
+
 ## 4.0.2 - 2024-03-26
 
 ### Fixed
