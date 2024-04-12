@@ -2,6 +2,7 @@
 namespace verbb\shortcut\migrations;
 
 use craft\db\Migration;
+use craft\helpers\MigrationHelper;
 
 class Install extends Migration
 {
@@ -19,6 +20,7 @@ class Install extends Migration
 
     public function safeDown(): bool
     {
+        $this->dropForeignKeys();
         $this->removeTables();
 
         return true;
@@ -29,11 +31,11 @@ class Install extends Migration
         $this->createTable('{{%shortcut_shortcuts}}', [
             'id' => $this->primaryKey(),
             'siteId' => $this->integer()->notNull(),
-            'elementId' => $this->integer()->null()->defaultValue(null),
-            'elementType' => $this->string()->null()->defaultValue(null),
+            'elementId' => $this->integer(),
+            'elementType' => $this->string(),
             'code' => $this->string()->notNull()->defaultValue(''),
-            'url' => $this->string(400)->notNull()->defaultValue(''),
-            'urlHash' => $this->string(400)->notNull()->defaultValue(''),
+            'url' => $this->text(),
+            'urlHash' => $this->text(),
             'hits' => $this->integer()->notNull()->defaultValue(0),
             'dateCreated' => $this->dateTime()->notNull(),
             'dateUpdated' => $this->dateTime()->notNull(),
@@ -44,7 +46,6 @@ class Install extends Migration
     public function createIndexes(): void
     {
         $this->createIndex(null, '{{%shortcut_shortcuts}}', 'code', true);
-        $this->createIndex(null, '{{%shortcut_shortcuts}}', 'urlHash', true);
     }
 
     public function addForeignKeys(): void
@@ -56,5 +57,12 @@ class Install extends Migration
     public function removeTables(): void
     {
         $this->dropTableIfExists('{{%shortcut_shortcuts}}');
+    }
+
+    public function dropForeignKeys(): void
+    {
+        if ($this->db->tableExists('{{%shortcut_shortcuts}}')) {
+            MigrationHelper::dropAllForeignKeysOnTable('{{%shortcut_shortcuts}}', $this);
+        }
     }
 }

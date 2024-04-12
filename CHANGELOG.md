@@ -6,6 +6,21 @@
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0-beta.1+`.
 
+## 4.0.3 - 2024-04-10
+
+### Fixed
+- Fix an error when uninstalling the plugin.
+
+## 4.0.2 - 2024-03-26
+
+### Fixed
+- Fix migration for `elementType`.
+
+## 4.0.1 - 2024-03-22
+
+### Changed
+- Increase the size of link storage past 400 characters.
+
 ## 4.0.0 - 2022-07-19
 
 ### Changed
