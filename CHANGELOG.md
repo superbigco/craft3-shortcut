@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.0.0-beta.2 - 2024-04-12
+
+### Changed
+- Increase the size of link storage past 400 characters.
+
+### Fixed
+- Fix an error when uninstalling the plugin.
+- Fix migration for `elementType`.
+
 ## 5.0.0-beta.1 - 2024-03-04
 
 ### Changed
