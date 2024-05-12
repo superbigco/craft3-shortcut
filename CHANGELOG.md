@@ -1,19 +1,15 @@
 # Changelog
 
-## 5.0.0-beta.2 - 2024-04-12
+## 5.0.0 - 2024-05-12
 
 ### Changed
+- Now requires PHP `8.2.0+`.
+- Now requires Craft `5.0.0+`.
 - Increase the size of link storage past 400 characters.
 
 ### Fixed
 - Fix an error when uninstalling the plugin.
 - Fix migration for `elementType`.
-
-## 5.0.0-beta.1 - 2024-03-04
-
-### Changed
-- Now requires PHP `8.2.0+`.
-- Now requires Craft `5.0.0-beta.1+`.
 
 ## 4.0.3 - 2024-04-10
 
